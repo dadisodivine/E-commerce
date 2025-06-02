@@ -181,6 +181,7 @@ body {
   background: linear-gradient(120deg, #f8fafc 0%, #eaf3ff 100%);
   position: relative;
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  padding-top: 64px; /* Height of navbar */
 }
 
 .shopping-container.loaded .main-title .letter-animation {
@@ -790,4 +791,41 @@ body {
 .Link{
   text-decoration: none;
   
+}
+
+@media screen and (max-width: 900px) {
+  .shopping-container {
+    padding-top: 60px;
+  }
+
+  .main-container {
+    padding: 1rem;
+    flex-direction: column-reverse;
+  }
+
+  .content-section {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shopping-container {
+    padding-top: 56px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .shopping-container {
+    padding-top: 50px;
+  }
+
+  .main-container {
+    padding: 0.5rem;
+  }
+
+  .content-section {
+    padding: 0.5rem;
+  }
 }
