@@ -1,0 +1,123 @@
+/* Importing Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: linear-gradient(180deg, #fff 60%, #eaf3ff 100%);
+  box-shadow: 2px 0 12px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 0 0 0;
+  z-index: 100;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.sidebar-logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-left: 32px;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0 0 0 32px;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar-list li {
+  font-size: 1rem;
+  color: #222;
+  padding: 10px 0;
+  cursor: pointer;
+  border-radius: 8px 0 0 8px;
+  transition: background 0.2s, color 0.2s;
+  margin-bottom: 2px;
+}
+
+.sidebar-list li:hover,
+.sidebar-list li.active {
+  background: #eaf3ff;
+  color: #007bff;
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 150px;
+    padding: 24px 0 0 0;
+  }
+  .sidebar-title {
+    margin-left: 18px;
+  }
+  .sidebar-list {
+    padding-left: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 60px;
+    padding-left: 0;
+    align-items: center;
+  }
+  .sidebar-title, .sidebar-list {
+    display: none;
+  }
+  .sidebar-logo {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100vw;
+    height: 56px;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 8px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.04);
+  }
+  .sidebar-logo {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    margin-right: 12px;
+  }
+  .sidebar-title {
+    display: none;
+  }
+  .sidebar-list {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    width: auto;
+  }
+  .sidebar-list li {
+    font-size: 0.95rem;
+    padding: 0 10px;
+    margin-bottom: 0;
+    border-radius: 8px;
+  }
+}
