@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Shopping Bags -->
+        <g transform="translate(300, 200)">
+            <!-- Purple Bag -->
+            <path d="M50,50 L150,50 L170,200 L30,200 Z" fill="#7C3AED"/>
+            <path d="M70,0 L130,0 L150,50 L50,50 Z" fill="#8B5CF6"/>
+            <path d="M70,0 C70,30 130,30 130,0" stroke="#8B5CF6" stroke-width="5"/>
+            
+            <!-- Orange Bag -->
+            <g transform="translate(100, 20)">
+                <path d="M50,50 L150,50 L170,200 L30,200 Z" fill="#F59E0B"/>
+                <path d="M70,0 L130,0 L150,50 L50,50 Z" fill="#FBBF24"/>
+                <path d="M70,0 C70,30 130,30 130,0" stroke="#FBBF24" stroke-width="5"/>
+            </g>
+        </g>
+        
+        <!-- Gift Box -->
+        <g transform="translate(500, 300)">
+            <rect x="0" y="0" width="80" height="80" fill="#EF4444"/>
+            <rect x="30" y="0" width="20" height="80" fill="#FCA5A5"/>
+            <rect x="0" y="30" width="80" height="20" fill="#FCA5A5"/>
+            <path d="M35,0 L45,0 C45,20 35,20 35,0" fill="#FECACA"/>
+        </g>
+        
+        <!-- Percentage Tags -->
+        <g transform="translate(200, 150)">
+            <circle cx="40" cy="40" r="30" fill="#F472B6"/>
+            <text x="25" y="50" font-family="Arial" font-size="24" fill="white">%</text>
+        </g>
+        <g transform="translate(550, 100)">
+            <circle cx="40" cy="40" r="30" fill="#60A5FA"/>
+            <text x="25" y="50" font-family="Arial" font-size="24" fill="white">%</text>
+        </g>
+        
+        <!-- Decorative Elements -->
+        <g transform="translate(100, 400)">
+            <circle cx="10" cy="10" r="5" fill="#A78BFA"/>
+            <circle cx="50" cy="30" r="8" fill="#F472B6"/>
+            <circle cx="90" cy="10" r="6" fill="#60A5FA"/>
+        </g>
+        <g transform="translate(600, 450)">
+            <circle cx="10" cy="10" r="5" fill="#A78BFA"/>
+            <circle cx="50" cy="30" r="8" fill="#F472B6"/>
+            <circle cx="90" cy="10" r="6" fill="#60A5FA"/>
+        </g>
+    </g>
+</svg>

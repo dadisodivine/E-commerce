@@ -75,9 +75,13 @@ const Products = () => {
     return ( 
         <div className="products-container">
             <Navbar />
+            <div className="products-pagination">
             {pagination}
+            </div>
             <Sidebar onCategorySelect={setSelectedCategory} />
+            <div className="products-content">
             {displayProducts}
+            </div>
 
             {/* Floating Action Bubbles */}
             <div className="floating-actions">

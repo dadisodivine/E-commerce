@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../Cart/CartContext";
 import "./Navbar.css";
+import shopLogo from '../assets/shop-logo.svg';
 
 const Navbar = () => {
   const location = useLocation();
@@ -9,7 +10,16 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">E-Shop</div>
+      <div className="navbar-logo animated-logo">
+        <Link to="/">
+          <img src={shopLogo} alt="E-Shop Logo" className="logo-image" />
+          <span className="logo-text">
+            <span className="logo-e">E</span>
+            <span className="logo-dash">-</span>
+            <span className="logo-shop">Shop</span>
+          </span>
+        </Link>
+      </div>
       <ul className="navbar-links">
         <li className={location.pathname === "/" ? "active" : ""}>
           <Link to="/" title="Home">

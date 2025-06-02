@@ -19,6 +19,9 @@
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
 }
+.products-pagination {
+  padding-top: 80px;
+}
 
 .product-card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);

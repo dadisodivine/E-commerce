@@ -4,11 +4,10 @@ import "./Popular.css";
 import { Link } from "react-router-dom";
 
 const Popular = () => {
-    const [popularProducts, setPopularProducts] = useState([]);
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [popularProducts, setPopularProducts] = useState([]);    const [currentSlide, setCurrentSlide] = useState(0);
     const [loading, setLoading] = useState(true);
     const slideInterval = useRef(null);
-    const visibleSlides = 4;
+    const visibleSlides = 6;
 
     useEffect(() => {
         fetchProducts()
