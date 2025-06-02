@@ -9,11 +9,14 @@ const ShoppingLandingPage = () => {
   const [text, setText] = useState('');
   const fullText = 'Welcome to Your Online Shopping Destination';
   const [index, setIndex] = useState(0);
-  
+
+  // Refs for scroll animations
   const descriptionRef = useRef(null);
   const buttonRef = useRef(null);
   const illustrationRef = useRef(null);
+  const popularRef = useRef(null);
 
+  // Scroll animations
   useEffect(() => {
     const observers = [];
     
@@ -32,7 +35,7 @@ const ShoppingLandingPage = () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    [descriptionRef, buttonRef, illustrationRef].forEach(ref => {
+    [descriptionRef, buttonRef, illustrationRef, popularRef].forEach(ref => {
       if (ref.current) {
         observer.observe(ref.current);
         observers.push(observer);
@@ -44,7 +47,7 @@ const ShoppingLandingPage = () => {
     };
   }, []);
 
-  // Typing animation effect
+  // Typing animation
   useEffect(() => {
     if (index < fullText.length) {
       const typing = setTimeout(() => {
@@ -73,7 +76,6 @@ const ShoppingLandingPage = () => {
       <Navbar />
       
       <div className="main-container">
-        
         <div className="content-section">
           <h1 className="main-title">
             {text}<span className="typing-cursor">|</span>
@@ -103,7 +105,6 @@ const ShoppingLandingPage = () => {
           </div>
         </div>
 
-        {/* Right side illustration */}
         <div className="illustration-section scroll-animate" ref={illustrationRef}>
           <img 
             src="/shopping-illustration.svg" 
@@ -113,12 +114,10 @@ const ShoppingLandingPage = () => {
         </div>
       </div>
 
-      {/* Popular Products Section */}
-      <div className="popular-wrapper scroll-animate">
+      <div className="popular-wrapper scroll-animate" ref={popularRef}>
         <Popular />
       </div>
 
-      {/* Floating Action Bubbles - keeping these from the original */}
       <div className="floating-actions">
         <Link to="/favorites" className='Link'>
           <div className="action-bubble bubble-1 pulse-animation" data-tooltip="Favorites">💎</div>

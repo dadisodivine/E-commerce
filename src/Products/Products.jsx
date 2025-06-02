@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { fetchProducts } from "../FetchProducts/FetchProducts";
 import "./Products.css"; // Ensure you have a CSS file for styling
 import Navbar from "../Navbar/Navbar";
@@ -12,9 +12,8 @@ const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [loading, setLoading] = useState(true);
     const productsPerPage = 20;
+
     
-    // Ref for the products grid
-    const productsGridRef = useRef(null);
 
     useEffect(() => {
         fetchProducts()
@@ -28,35 +27,6 @@ const Products = () => {
             })
             .finally(() => setLoading(false));
     }, []);
-
-    // Set up intersection observer for scroll animations
-    useEffect(() => {
-        const observerCallback = (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Add animation class to each product card
-                    entry.target.querySelectorAll('.product-card').forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('scroll-animate-active');
-                        }, index * 100); // Stagger the animations
-                    });
-                }
-            });
-        };
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '50px'
-        };
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        if (productsGridRef.current) {
-            observer.observe(productsGridRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, [products]); // Re-run when products change
 
     const totalPages = Math.ceil(products.length / productsPerPage);
     const paginatedProducts = products.slice((currentPage - 1) * productsPerPage, currentPage * productsPerPage);
@@ -75,10 +45,10 @@ const Products = () => {
             <span>Loading...</span>
         </div>
     ) : (
-        <div className="products-grid" ref={productsGridRef}>
+        <div className="products-grid">
             {filteredProducts.map(product => (
                 <Link to={`/product/${product.id}`} className="Link" key={product.id}>
-                    <div className="product-card scroll-animate">
+                    <div className="product-card">
                         <img src={product.image} alt={product.title} />
                         <h3>{product.title}</h3>
                         <p>${product.price}</p>
