@@ -22,7 +22,9 @@
 .products-pagination {
   padding-top: 80px;
 }
-
+.products-content{
+  padding-bottom: 20px;
+}
 .product-card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   transform: translateY(-4px) scale(1.03);
