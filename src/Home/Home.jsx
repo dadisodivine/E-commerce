@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import Popular from '../PopularSection/Popular';
+import Navbar from '../Navbar/Navbar';
 
 
 const ShoppingLandingPage = () => {
-  const [activeNav, setActiveNav] = useState('HOME');
   const [buttonClicked, setButtonClicked] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [email, setEmail] = useState('');
   const sceneRef = useRef(null);
   const elementsRef = useRef([]);
 
@@ -30,9 +31,11 @@ const ShoppingLandingPage = () => {
     setTimeout(() => setButtonClicked(false), 300);
   };
 
-  // Navigation click handler
-  const handleNavClick = (navItem) => {
-    setActiveNav(navItem);
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // Add newsletter subscription logic here
+    setEmail('');
+    alert('Thanks for subscribing!');
   };
 
   // Floating elements data
@@ -50,26 +53,19 @@ const ShoppingLandingPage = () => {
     { id: 3, size: 150, position: { top: '65%', left: '45%' }, delay: 2 },
   ];
 
+  const features = [
+    { icon: '🚚', title: 'Free Shipping', description: 'On orders over $50' },
+    { icon: '⚡', title: 'Fast Delivery', description: '2-3 business days' },
+    { icon: '🔒', title: 'Secure Payment', description: 'SSL encryption' },
+    { icon: '💬', title: '24/7 Support', description: 'Always here to help' }
+  ];
+
+  const brands = ['Nike', 'Adidas', 'Puma', 'Under Armour', 'New Balance'];
+
   return (
     <div className={`shopping-container ${isLoaded ? 'loaded' : ''}`}>
+      <Navbar />
       
-      {/* Navigation */}
-      <nav className="navbar">
-        <div className="nav-links">
-          {['Home', 'Products'].map((item, index) => (
-            <Link
-              key={item}
-              to={item === 'Home' ? '/' : '/products'}
-              className={`nav-link ${activeNav === item ? 'active' : ''}`}
-              onClick={() => handleNavClick(item)}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {item}
-            </Link>
-          ))}
-        </div>
-      </nav>
-
       {/* Main Content Container */}
       <div className="main-container">
         
@@ -156,58 +152,98 @@ const ShoppingLandingPage = () => {
         </div>
 
         {/* Right Side - Content */}
-        <div className="content-section">
-          <h1 className="main-title slide-in-right">
-            <span className="title-line">
-              {['S', 'H', 'O', 'P', 'P', 'I', 'N', 'G'].map((letter, index) => (
-                <span 
-                  key={index} 
-                  className="letter-animation"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {letter}
-                </span>
-              ))}
+          <div className="content-section">
+            <h1 className="main-title slide-in-right">
+              <span className="title-line">
+                {['S', 'H', 'O', 'P', 'P', 'I', 'N', 'G'].map((letter, index) => (
+            <span 
+              key={index} 
+              className="letter-animation"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              {letter}
             </span>
-            <span className="title-line">
-              {['O', 'N', 'L', 'I', 'N', 'E'].map((letter, index) => (
-                <span 
-                  key={index} 
-                  className="letter-animation"
-                  style={{ animationDelay: `${(index + 8) * 0.1}s` }}
-                >
-                  {letter}
-                </span>
-              ))}
+                ))}
+              </span>
+              <span className="title-line">
+                {['O', 'N', 'L', 'I', 'N', 'E'].map((letter, index) => (
+            <span 
+              key={index} 
+              className="letter-animation"
+              style={{ animationDelay: `${(index + 8) * 0.1}s` }}
+            >
+              {letter}
             </span>
-          </h1>
-          
-          <p className="description slide-in-right">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            diam nonummy nibh euismod tincidunt ut laoreet dolore
-            magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-            quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-          </p>
-          
-          <button 
-            className={`cta-button slide-in-up ${buttonClicked ? 'clicked' : ''}`}
-            onClick={handleButtonClick}
-          >
-            <Link to="products" className='Link'><span className="button-text">Shop Now</span></Link>
-            <div className="button-bg"></div>
-          </button>
+                ))}
+              </span>
+            </h1>
+            
+            <p className="description slide-in-right">
+              Discover the latest trends and exclusive deals at our online store. 
+              Enjoy a seamless shopping experience with fast delivery, secure payments, 
+              and a wide selection of products to suit every style and need. 
+              Shop with confidence and elevate your everyday with quality you can trust.
+            </p>
+            
+            {/* Features Section */}
+            <div className="features-grid">
+              {features.map((feature, index) => (
+                <div key={index} className="feature-card slide-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <span className="feature-icon">{feature.icon}</span>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <button 
+              className={`cta-button slide-in-up ${buttonClicked ? 'clicked' : ''}`}
+              onClick={handleButtonClick}
+            >
+              <Link to="products" className='Link'>
+                <span className="button-text">Shop Now</span>
+              </Link>
+              <div className="button-bg"></div>
+            </button>
+          </div>
+              </div>
+
+              {/* Newsletter Section */}
+      <div className="newsletter-section">
+        <div className="newsletter-content">
+          <h2>Stay Updated</h2>
+          <p>Subscribe to our newsletter for exclusive offers and updates</p>
+          <form onSubmit={handleSubscribe} className="newsletter-form">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      {/* Brands Section */}
+      <div className="brands-section">
+        <h2>Trusted by Leading Brands</h2>
+        <div className="brands-grid">
+          {brands.map((brand, index) => (
+            <div key={index} className="brand-item slide-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+              {brand}
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Floating Action Bubbles */}
       <div className="floating-actions">
-        <Link to="/cart" className='Link'>
-          <div className="action-bubble bubble-1 pulse-animation" data-tooltip="View your cart">🛒</div>
+        <Link to="/favorites" className='Link'>
+          <div className="action-bubble bubble-1 pulse-animation" data-tooltip="Favorites">💎</div>
         </Link>
-        <Link to="/chat" className='Link'>
-          <div className="action-bubble bubble-2 pulse-animation" data-tooltip="Favorites">💎</div>
-        </Link>
-        <div className="action-bubble bubble-3 pulse-animation" data-tooltip="Chat">⭐</div>
+        <div className="action-bubble bubble-2 pulse-animation" data-tooltip="Chat">💬</div>
       </div>
       <Popular />
     </div>

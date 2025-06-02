@@ -81,13 +81,10 @@ const Products = () => {
 
             {/* Floating Action Bubbles */}
             <div className="floating-actions">
-                <Link to="/cart" className='Link'>
-                    <div className="action-bubble bubble-1 pulse-animation" data-tooltip="View your cart">🛒</div>
+                <Link to="/favorites" className='Link'>
+                    <div className="action-bubble bubble-1 pulse-animation" data-tooltip="Favorites">💎</div>
                 </Link>
-                <Link to="/chat" className='Link'>
-                    <div className="action-bubble bubble-2 pulse-animation" data-tooltip="Favorites">💎</div>
-                </Link>
-                <div className="action-bubble bubble-3 pulse-animation" data-tooltip="Chat">⭐</div>
+                <div className="action-bubble bubble-2 pulse-animation" data-tooltip="Chat">💬</div>
             </div>
         </div>
      );

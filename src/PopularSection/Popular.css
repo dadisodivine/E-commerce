@@ -8,6 +8,7 @@
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
   padding: 32px 24px;
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 .popular-title {
@@ -25,6 +26,7 @@
 }
 
 .popular-card {
+  flex: 0 0 calc(25% - 18px); /* 4 items per view with gap consideration */
   background: #f8f8f8;
   border-radius: 12px;
   box-shadow: 0 1px 6px rgba(0,0,0,0.06);
@@ -93,11 +95,10 @@
 }
 
 .popular-slider-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 24px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
 }
 
 .popular-slider-btn {
@@ -125,56 +126,45 @@
   display: flex;
   gap: 24px;
   overflow: hidden;
-  min-width: 600px;
+  transition: transform 0.5s ease;
 }
 
 @media (max-width: 900px) {
-  .popular-slider-track {
-    min-width: 0;
-    gap: 12px;
+  .popular-card {
+    flex: 0 0 calc(33.333% - 16px); /* 3 items per view */
   }
-  .popular-slider-container {
-    gap: 6px;
+  .popular-slider-track {
+    gap: 16px;
   }
 }
 
 @media (max-width: 600px) {
   .popular-section {
-    padding: 16px 4px;
+    padding: 16px 12px;
+    margin: 20px auto;
   }
-  .popular-title {
-    font-size: 1.1rem;
+  
+  .popular-card {
+    flex: 0 0 calc(50% - 12px); /* 2 items per view */
   }
-  .popular-grid {
+  
+  .popular-slider-track {
     gap: 12px;
   }
-  .popular-card {
-    padding: 10px;
-  }
+  
   .popular-img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
-  .popular-pagination {
-    gap: 6px;
-    margin: 18px 0 0 0;
+}
+
+@media (max-width: 400px) {
+  .popular-card {
+    flex: 0 0 calc(100% - 8px); /* 1 item per view */
   }
-  .popular-pagination-btn {
-    font-size: 0.9rem;
-    padding: 6px 10px;
-    border-radius: 6px;
-  }
-  .popular-slider-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .popular-slider-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 1.1rem;
-  }
+  
   .popular-slider-track {
-    gap: 6px;
+    gap: 8px;
   }
 }
 

@@ -576,56 +576,217 @@ body {
   visibility: visible;
 }
 
-@media (max-width: 1024px) {
-  .main-container {
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  background: linear-gradient(135deg, #007bff20 0%, #0066ff10 100%);
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-content h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.newsletter-content p {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.newsletter-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: #0056b3;
+}
+
+/* Brands Section */
+.brands-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.brands-section h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.brands-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand-item {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 600;
+  padding: 16px 32px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.brand-item:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .newsletter-form {
     flex-direction: column;
-    align-items: center;
-    padding: 24px 0 0 0;
+    padding: 0 20px;
   }
-  .scene-container {
-    min-height: 400px;
-    width: 100%;
+
+  .brands-grid {
+    gap: 20px;
   }
-  .content-section {
-    padding: 0 16px;
-    min-width: unset;
-    width: 100%;
-    align-items: center;
-    text-align: center;
-  }
-  .main-title {
-    font-size: 2.2rem;
+
+  .brand-item {
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 600px) {
-  .main-container {
-    padding: 8px 0 0 0;
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: 1fr;
   }
-  .scene-container {
-    min-height: 220px;
+
+  .newsletter-section {
+    padding: 40px 15px;
   }
-  .content-section {
-    padding: 0 4px;
+
+  .newsletter-content h2 {
+    font-size: 1.5rem;
   }
-  .main-title {
-    font-size: 1.3rem;
+
+  .brands-section {
+    padding: 40px 15px;
   }
-  .cta-button {
-    padding: 10px 18px;
-    font-size: 1rem;
-  }
-  .floating-actions {
-    bottom: 12px;
-    right: 12px;
-    gap: 10px;
-  }
-  .action-bubble {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
+
+  .brands-section h2 {
+    font-size: 1.4rem;
   }
 }
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .nav-link:hover {
+    background: none;
+    color: inherit;
+  }
+
+  .cta-button:hover {
+    transform: none;
+  }
+
+  .action-bubble:hover {
+    transform: none;
+  }
+}
+
+/* Tall Mobile Devices */
+@media screen and (max-height: 700px) and (max-width: 768px) {
+  .scene-container {
+    height: 45vh;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    margin: 1rem 0;
+  }
+}
+
 .Link{
   text-decoration: none;
   

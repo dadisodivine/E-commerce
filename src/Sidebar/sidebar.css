@@ -88,36 +88,57 @@
 
 @media (max-width: 600px) {
   .sidebar {
-    width: 100vw;
-    height: 56px;
+    width: 100%;
+    height: 60px;
     top: auto;
     bottom: 0;
     left: 0;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0 8px;
+    padding: 0;
     box-shadow: 0 -2px 12px rgba(0,0,0,0.04);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    background: #fff;
   }
-  .sidebar-logo {
-    font-size: 1.5rem;
-    margin-bottom: 0;
-    margin-right: 12px;
+
+  .sidebar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
-  .sidebar-title {
-    display: none;
-  }
+
   .sidebar-list {
     display: flex;
     flex-direction: row;
-    padding: 0;
-    margin: 0;
+    padding: 0 16px;
     width: auto;
+    min-width: min-content;
+    height: 100%;
+    align-items: center;
+    gap: 20px;
   }
+
   .sidebar-list li {
-    font-size: 0.95rem;
-    padding: 0 10px;
-    margin-bottom: 0;
-    border-radius: 8px;
+    white-space: nowrap;
+    padding: 8px 16px;
+    margin: 0;
+    border-radius: 20px;
+    background: #f8f9fa;
+  }
+
+  .sidebar-list li:hover,
+  .sidebar-list li.active {
+    background: #eaf3ff;
+    color: #007bff;
+  }
+
+  .sidebar-logo {
+    display: none;
+  }
+
+  .sidebar-title {
+    display: none;
   }
 }

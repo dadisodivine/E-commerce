@@ -1,0 +1,22 @@
+/* App-wide styles */
+.app-container {
+  padding-top: 64px; /* Height of navbar */
+}
+
+@media (max-width: 900px) {
+  .app-container {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding-top: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding-top: 50px;
+  }
+}

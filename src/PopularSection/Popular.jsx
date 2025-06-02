@@ -38,13 +38,6 @@ const Popular = () => {
         return () => clearInterval(slideInterval.current);
     }, [slideCount, visibleSlides]);
 
-    const nextSlide = () => {
-        setCurrentSlide(prev => (prev + 1) % (slideCount - visibleSlides + 1));
-    };
-    const prevSlide = () => {
-        setCurrentSlide(prev => (prev - 1 + (slideCount - visibleSlides + 1)) % (slideCount - visibleSlides + 1));
-    };
-
     return (
         <div className="popular-section">
             <h2 className="popular-title">Popular Products</h2>
@@ -52,17 +45,16 @@ const Popular = () => {
                 <div className="popular-loading-spinner"></div>
             ) : (
                 <div className="popular-slider-container">
-                    <button className="popular-slider-btn prev" onClick={prevSlide}>&lt;</button>
                     <div className="popular-slider-track">
                         {popularProducts.slice(currentSlide, currentSlide + visibleSlides).map(product => (
-                          <Link to={`/product/${product.id}`} className="Link"> <div key={product.id} className="popular-card">
+                          <Link to={`/product/${product.id}`} key={product.id} className="Link">
+                            <div className="popular-card">
                                 <img src={product.image} alt={product.title} className="popular-img" />
-                                <h3 className="popular-name">{product.title}</h3>
                                 <p className="popular-price">${product.price}</p>
-                            </div></Link> 
+                            </div>
+                          </Link> 
                         ))}
                     </div>
-                    <button className="popular-slider-btn next" onClick={nextSlide}>&gt;</button>
                 </div>
             )}
         </div>
