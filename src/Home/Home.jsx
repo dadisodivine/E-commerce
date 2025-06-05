@@ -1,53 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Popular from '../PopularSection/Popular';
 
 const ShoppingLandingPage = () => {
-  const [buttonClicked, setButtonClicked] = useState(false);
   const [text, setText] = useState('');
-  const fullText = 'Welcome to Your Online Shopping Destination';
+  const fullText = 'E-Comm';
   const [index, setIndex] = useState(0);
 
-  // Refs for scroll animations
-  const descriptionRef = useRef(null);
-  const buttonRef = useRef(null);
-  const illustrationRef = useRef(null);
-  const popularRef = useRef(null);
-
-  // Scroll animations
-  useEffect(() => {
-    const observers = [];
-    
-    const observerCallback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('scroll-animate-active');
-        }
-      });
-    };
-
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px'
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    [descriptionRef, buttonRef, illustrationRef, popularRef].forEach(ref => {
-      if (ref.current) {
-        observer.observe(ref.current);
-        observers.push(observer);
-      }
-    });
-
-    return () => {
-      observers.forEach(obs => obs.disconnect());
-    };
-  }, []);
-
-  // Typing animation
   useEffect(() => {
     if (index < fullText.length) {
       const typing = setTimeout(() => {
@@ -66,11 +27,6 @@ const ShoppingLandingPage = () => {
     }
   }, [index]);
 
-  const handleButtonClick = () => {
-    setButtonClicked(true);
-    setTimeout(() => setButtonClicked(false), 300);
-  };
-
   return (
     <div className="shopping-container">
       <Navbar />
@@ -78,51 +34,53 @@ const ShoppingLandingPage = () => {
       <div className="main-container">
         <div className="content-section">
           <h1 className="main-title">
-            {text}<span className="typing-cursor">|</span>
+            {text.split('\n').map((line, i) => (
+              <div key={i} className="title-line">{line}</div>
+            ))}
+            <span className="typing-cursor">|</span>
           </h1>
           
-          <p className="description scroll-animate" ref={descriptionRef}>
-            Discover the best deals on the latest products, from electronics to fashion and more. 
-            Shop with confidence, enjoy fast delivery, and experience seamless online shopping. 
-            Your one-stop destination for everything you need—exclusive offers, top brands, and unbeatable prices await!
+          <p className="platform-description">
+            Your complete solution for online retail success. Build,
+            manage, and grow your e-commerce business with our
+            powerful platform.
           </p>
 
-          <button 
-            className={`learn-more-button scroll-animate ${buttonClicked ? 'clicked' : ''}`}
-            onClick={handleButtonClick}
-            ref={buttonRef}
-          >
+          <button className="explore-button">
             <Link to="/products">
-              Visit store
+              Get Started
             </Link>
           </button>
+        </div>
 
-          <div className="progress-dots">
-            <span className="dot active"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
+        <div className="decorative-elements">
+          <div className="floating-icons">
+            <div className="icon shopping-bag">🛍️</div>
+            <div className="icon cart">🛒</div>
+            <div className="icon heart">❤️</div>
+            <div className="icon star">⭐</div>
+            <div className="icon gift">🎁</div>
+            <div className="icon credit-card">💳</div>
+            <div className="icon tag">🏷️</div>
+            <div className="icon delivery">📦</div>
+          </div>
+          <div className="particle-effects">
+            <div className="particle p1"></div>
+            <div className="particle p2"></div>
+            <div className="particle p3"></div>
+            <div className="particle p4"></div>
+          </div>
+          <div className="gradient-orb"></div>
+          <div className="gradient-lines">
+            <div className="line line1"></div>
+            <div className="line line2"></div>
+            <div className="line line3"></div>
           </div>
         </div>
-
-        <div className="illustration-section scroll-animate" ref={illustrationRef}>
-          <img 
-            src="/shopping-illustration.svg" 
-            alt="Shopping illustration with people and shopping bags"
-            className="main-illustration" 
-          />
-        </div>
       </div>
 
-      <div className="popular-wrapper scroll-animate" ref={popularRef}>
+      <div className="popular-wrapper">
         <Popular />
-      </div>
-
-      <div className="floating-actions">
-        <Link to="/favorites" className='Link'>
-          <div className="action-bubble bubble-1 pulse-animation" data-tooltip="Favorites">💎</div>
-        </Link>
-        <div className="action-bubble bubble-2 pulse-animation" data-tooltip="Chat">💬</div>
       </div>
     </div>
   );
