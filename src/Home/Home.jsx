@@ -100,9 +100,7 @@ const ShoppingLandingPage = () => {
       </div>
 
       {/* Popular Products Section */}
-      <div className="popular-wrapper">
-        <h2 className="section-title">Popular Products</h2>
-      </div>
+      
     </div>
   );
 };
