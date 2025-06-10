@@ -6,7 +6,7 @@ import Popular from '../PopularSection/Popular';
 
 const ShoppingLandingPage = () => {
   const [text, setText] = useState('');
-  const fullText = 'E-Comm';
+  const fullText = 'Shop Smart, Live Better';
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -31,56 +31,77 @@ const ShoppingLandingPage = () => {
     <div className="shopping-container">
       <Navbar />
       
-      <div className="main-container">
-        <div className="content-section">
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="hero-content">
           <h1 className="main-title">
-            {text.split('\n').map((line, i) => (
-              <div key={i} className="title-line">{line}</div>
-            ))}
+            {text}
             <span className="typing-cursor">|</span>
           </h1>
-          
           <p className="platform-description">
-            Your complete solution for online retail success. Build,
-            manage, and grow your e-commerce business with our
-            powerful platform.
+            Discover amazing products at unbeatable prices. Shop the latest trends
+            and enjoy exclusive deals every day.
           </p>
-
-          <button className="explore-button">
-            <Link to="/products">
-              Get Started
-            </Link>
-          </button>
+          <div className="hero-buttons">
+            <button className="primary-button">
+              <Link to="/products">Shop Now</Link>
+            </button>
+            <button className="secondary-button">
+              <Link to="/categories">Browse Categories</Link>
+            </button>
+          </div>
         </div>
-
-        <div className="decorative-elements">
+        <div className="hero-image">
           <div className="floating-icons">
             <div className="icon shopping-bag">🛍️</div>
             <div className="icon cart">🛒</div>
             <div className="icon heart">❤️</div>
             <div className="icon star">⭐</div>
-            <div className="icon gift">🎁</div>
-            <div className="icon credit-card">💳</div>
-            <div className="icon tag">🏷️</div>
-            <div className="icon delivery">📦</div>
-          </div>
-          <div className="particle-effects">
-            <div className="particle p1"></div>
-            <div className="particle p2"></div>
-            <div className="particle p3"></div>
-            <div className="particle p4"></div>
-          </div>
-          <div className="gradient-orb"></div>
-          <div className="gradient-lines">
-            <div className="line line1"></div>
-            <div className="line line2"></div>
-            <div className="line line3"></div>
           </div>
         </div>
       </div>
 
+      {/* Featured Categories */}
+      <div className="featured-categories">
+        <h2 className="section-title">Shop by Category</h2>
+        <div className="category-grid">
+          <div className="category-card">
+            <div className="category-icon">👕</div>
+            <h3>Fashion</h3>
+            <Link to="/category/fashion">Shop Now</Link>
+          </div>
+          <div className="category-card">
+            <div className="category-icon">📱</div>
+            <h3>Electronics</h3>
+            <Link to="/category/electronics">Shop Now</Link>
+          </div>
+          <div className="category-card">
+            <div className="category-icon">🏠</div>
+            <h3>Home & Living</h3>
+            <Link to="/category/home">Shop Now</Link>
+          </div>
+          <div className="category-card">
+            <div className="category-icon">🎮</div>
+            <h3>Gaming</h3>
+            <Link to="/category/gaming">Shop Now</Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Promotional Banner */}
+      <div className="promo-banner">
+        <div className="promo-content">
+          <h2>Special Offer</h2>
+          <p>Get 20% off on your first purchase</p>
+          <button className="promo-button">
+            <Link to="/products">Shop Now</Link>
+          </button>
+        </div>
+      </div>
+
+      {/* Popular Products Section */}
       <div className="popular-wrapper">
-        <Popular />
+        <h2 className="section-title">Popular Products</h2>
       </div>
     </div>
   );
